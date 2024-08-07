@@ -12,11 +12,11 @@ if(isset($_POST)){
     PASSWORD_DEFAULT); 
     if($user==$username && $pass == $password){
         {
-            echo "Login Successfully <br>"  .$hash;
+            header("Location: 1.php");
         }
     }else
     {
-        echo "Unable to login";
+        header("Location: quiz.php");
     }
 }
    
