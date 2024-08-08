@@ -29,4 +29,14 @@
             header("Location: 2.php");
         }    
     }
+    $options=array('Integer','String', 'Float', 'Boolean');
+    echo $option[0];
+    echo $option[1];
+    echo $option[2];
+    echo $option[3];
+    // foreach($options as $values){
+        
+    //     }
+
+    
 ?>
