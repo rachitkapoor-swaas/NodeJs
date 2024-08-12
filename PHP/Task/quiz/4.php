@@ -2,7 +2,7 @@
 <form action="" method='post'>
     <h4>What does the $_SERVER['REQUEST_METHOD'] variable return?</h4>
 
-    <input type="radio" name="fav_language" value="option 1">
+    <!-- <input type="radio" name="fav_language" value="option 1">
     <label for="option 1">The IP address of the client</label><br>
 
     <input type="radio" name="fav_language" value="option 2">
@@ -12,8 +12,19 @@
     <label for="option 3">The server's operating system</label><br>
 
     <input type="radio" name="fav_language" value="option 4">
-    <label for="option 4">The server's hostname</label><br>
+    <label for="option 4">The server's hostname</label><br> -->
+    <?php
 
+        $array = array("option1"=>"The IP address of the client",
+                    "option2"=>"The HTTP method used for the request (GET, POST, etc.)",
+                    "option3"=>"The server's operating system",
+                    "option4"=>"The server's hostname"
+                    );
+                    
+                    foreach($array as $key=>$value){
+                        echo ('<input type="radio" name="fav_language"' .htmlspecialchars($key).'>'.htmlspecialchars($value).'<br><br>');
+                    }
+    ?>
     <input type="submit" name="submit" value="Submit">
 </form>
 

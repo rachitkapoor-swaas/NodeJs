@@ -2,7 +2,7 @@
 <form action="" method='post'>
     <h4>Which of the following is the correct syntax for a basic PHP comment?</h4>
 
-    <input type="radio" name="fav_language" value="option 1">
+    <!-- <input type="radio" name="fav_language" value="option 1">
     <label for="option 1"> // This is a comment</label><br>
 
     <input type="radio" name="fav_language" value="option 2">
@@ -12,7 +12,19 @@
     <label for="option 3"># This is a comment</label><br>
 
     <input type="radio" name="fav_language" value="option 4">
-    <label for="option 4"> /* This is a comment */</label><br>
+    <label for="option 4"> /* This is a comment */</label><br> -->
+
+    <?php
+        $array = array("option1"=>"// This is a comment",
+                    "option2"=>"*",
+                    "option3"=>"#This is a comment",
+                    "option4"=>"/* This is a comment */",
+                    );
+            
+            foreach ($array as $key => $value) {
+                echo ('<input type = "radio" name="fav_language"' .htmlspecialchars($key).'>'.htmlspecialchars($value).'<br><br>');
+            }
+    ?>
 
     <input type="submit" name="submit" value="Submit">
 </form>

@@ -2,7 +2,7 @@
 <form action="" method='post'>
     <h4>What is the correct way to include a PHP file named "header.php" at the beginning of a page?</h4>
 
-    <input type="radio" name="fav_language" value="option 1">
+    <!-- <input type="radio" name="fav_language" value="option 1">
     <label for="option 1">include("header.php");</label><br>
 
     <input type="radio" name="fav_language" value="option 2">
@@ -12,8 +12,18 @@
     <label for="option 3">Both a and b are correct</label><br>
 
     <input type="radio" name="fav_language" value="option 4">
-    <label for="option 4">Neither a nor b</label><br>
-
+    <label for="option 4">Neither a nor b</label><br> -->
+    <?php
+    $array = array(
+        "option1" => '<?php include("header.php")?>',
+        "option2" => '<?php require("header.php") ?>',
+        "option3" => 'Both a and b are correct',
+        "option4" => 'Neither a nor b'
+    );
+    foreach ($array as $key => $value) {
+        echo ('<input type = "radio" name="fav_language"' . htmlspecialchars($key) . '>' . htmlspecialchars($value) . '<br><br>');
+    }
+    ?>
     <input type="submit" name="submit" value="Submit">
 </form>
 
