@@ -10,6 +10,9 @@ $Password=$_POST["Password"];
 if($conn->connect_error){
     die('Connection Failed: ' .$conn->connect_error);
 }else{
+
+    $Password = password_hash($Password, PASSWORD_DEFAULT);
+
     $sql ="INSERT INTO `formsubmissions` (`Name`, `DOB`,`Email`, `PhoneNumber`, `Address`, `Password`) VALUES ('".$Name."', '".$DOB."' ,'".$Email."','".$PhoneNumber."','".$Address."','".$Password."')";
    
     if ($conn->query($sql) === TRUE) {

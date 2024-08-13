@@ -45,7 +45,7 @@
             </div>
             
             <div class="form-group">
-                <label for="Password"> Create Password:</label>
+                <label for="Password">Password:</label>
                 <input type="text" name="Password" class="form-control" value="<?php echo isset($_POST['Password']) ? htmlspecialchars($_POST['Password'], ENT_QUOTES) : '';?>">
             </div>
 

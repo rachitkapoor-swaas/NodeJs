@@ -6,52 +6,37 @@
 <body>
 
 <h2>Sample HTML Table</h2>
-
-<table border="1">
+<table>
     <tr>
         <th>Name</th>
         <th>DOB</th>
         <th>Email</th>
-        <th>Phone Number</th>
+        <th>PhoneNumber</th>
         <th>Address</th>
     </tr>
-    <tr>
-        <td>Rachit Kapoor</td>
-        <td>Rohan Kapoor</td>
-        <td>Prateek Chaudhary</td>
-        <td>Anjali Aggarwal</td>
-        <td>Devain Chaudhary</td>
-        <td>Pratham Tewatia</td>
-    </tr>
-    <tr>
-        <td>Rohan Kapoor</td>
-        <td>Row 2, Cell 3</td>
-        <td>Row 2, Cell 3</td>
-        <td>Row 2, Cell 3</td>
-        <td>Row 2, Cell 3</td>
-    </tr>
-    <tr>
-        <td>Prateek Chaudhary</td>
-        <td>Row 3, Cell 2</td>
-        <td>Row 3, Cell 3</td>
-        <td>Row 3, Cell 3</td>
-        <td>Row 3, Cell 3</td>
-    </tr>
-    <tr>
-        <td>Anjali Aggarwal</td>
-        <td>Row 3, Cell 2</td>
-        <td>Row 3, Cell 3</td>
-        <td>Row 3, Cell 3</td>
-        <td>Row 3, Cell 3</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>Row 3, Cell 2</td>
-        <td>Row 3, Cell 3</td>
-        <td>Row 3, Cell 3</td>
-        <td>Row 3, Cell 3</td>
-    </tr>
-</table>
+
+<?php
+
+    $conn = mysqli_connect("127.0.0.1:3390","root","","test_db");
+    if ($conn-> connect_error) {
+        die("Connection Failed". $conn->connect_error);
+    }
+
+    $sql = "SELECT Name,DOB,Email,PhoneNumber,Address from formsubmissions";
+    $result = mysqli_query($conn, $sql);
+
+    if($result->num_rows > 0) {
+        while($row = $result-> fetch_assoc()) {
+            echo "<tr><td>".$row["Name"]."</td><td>".$row["DOB"]."</td> <td>".$row["Email"]."</td><td>".$row["PhoneNumber"]."</td><td>".$row["Address"]."</td></tr>";
+    }
+    echo "</table>";
+}
+else {
+    echo "0 result";
+}
+$conn->close();
+?>
+
 
 </body>
 </html>
