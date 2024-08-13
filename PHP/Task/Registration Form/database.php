@@ -1,21 +1,26 @@
 <?php
-// db_connect.php
-
-$servername = "localhost";  // Replace with your database server address (usually localhost)
-$username = "root"; // Replace with your database username
-$password = ""; // Replace with your database password
-$dbname = "test_db";         // Replace with your database name
-$port = 3390;                // Specify the port number if it's not the default 3306
-
-try {
-    // Create a new PDO instance with the correct DSN
-    $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
-
-    // Set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    echo "Connected successfully"; 
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
+$Name = $_POST["Name"];
+$DOB = $_POST["DOB"];
+$Email=$_POST["Email"];
+$PhoneNumber=$_POST["PhoneNumber"];
+$Address=$_POST["Address"];
+$Password=$_POST["Password"];
+ 
+ $conn = new mysqli('127.0.0.1:3390', 'root', '','test_db');
+if($conn->connect_error){
+    die('Connection Failed: ' .$conn->connect_error);
+}else{
+    $sql ="INSERT INTO `formsubmissions` (`Name`, `DOB`,`Email`, `PhoneNumber`, `Address`, `Password`) VALUES ('".$Name."', '".$DOB."' ,'".$Email."','".$PhoneNumber."','".$Address."','".$Password."')";
+   
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        header("Location: login.php");
+       
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+ 
+ 
+    $conn->close();
 }
 ?>
